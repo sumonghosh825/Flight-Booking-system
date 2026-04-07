@@ -1,0 +1,32 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<h2>Booking History </h2>
+
+{% for i in data %}
+    <div>
+    <h3>{{ i.passenger_name }}</h3>
+
+    <p><b>Flight:</b> {{ i.flight.flight_name }} ({{ i.flight.flight_no }})</p>
+    <p><b>Company:</b> {{ i.flight.flight_company }}</p>
+
+    <p><b>Route:</b> {{ i.flight.from_city }} → {{ i.flight.to_city }}</p>
+
+    <p><b>Departure:</b> {{ i.flight.departure_date }} | {{ i.flight.departure_time }}</p>
+
+    <p><b>Seat:</b> {{ i.seat_no }} ({{ i.seat_class }})</p>
+
+    <p><b>Email:</b> {{ i.email }}</p>
+    <p><b>Phone:</b> {{ i.phone_no }}</p>
+
+    <h3>₹ {{ i.flight.price }}</h3>
+
+    {% if i.status == "Cancelled" %}
+        <span style=" color :red;">Cancelled</span>
+    {% else %}
+        <span style="color:green;">Booked</span>
+    {% endif %}
+</div>
+<hr>
+{% endfor %}
+{% endblock %}

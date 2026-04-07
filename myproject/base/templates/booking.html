@@ -1,0 +1,42 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<h2>Booking Flight </h2>
+
+<h3>{{ data.passenger_name }}</h3>
+<p>Age: {{ data.age }}</p>
+
+<p><b>Flight:</b> {{ data.flight.flight_name }} ({{ data.flight.flight_no }})</p>
+<p><b>Company:</b> {{ data.flight.flight_company }}</p>
+
+<p>{{ data.flight.from_city }} to {{ data.flight.to_city }}</p>
+
+<p><b>Departure:</b> {{ data.flight.departure_date }} | {{ data.flight.departure_time }}</p>
+
+<p><b>Seat:</b> {{ data.seat_no }} ({{ data.seat_class }})</p>
+
+<p>Phone: {{ data.phone_no }}</p>
+<p>Email: {{ data.email }}</p>
+
+<p>Adhar: ****{{ data.adhar_no|slice:"-4:" }}</p>
+
+<h3>Price : {{ data.flight.price }}</h3>
+
+{% if data.status == "Cancelled" %}
+    <p style="color:red;"> Cancelled</p>
+{% else %}
+    <p style="color:green;">Booked</p>
+{% endif %}
+
+<br><br>
+
+{% if data %}
+    <a href="{% url 'update_booking' data.id %}">Update Details</a>
+
+    <a href="{% url 'delete_booking' data.id %}" 
+       onclick="return confirm('Are you sure?')">
+       Cancel Booking
+    </a>
+{% endif %}
+
+{% endblock %}

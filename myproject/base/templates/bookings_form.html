@@ -1,0 +1,31 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<h2>Book Flight</h2>
+
+<h3>{{ data.flight_name }}</h3>
+<p>{{ data.from_city }} to {{ data.to_city }}</p>
+<p>Price: {{ data.price }}</p>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <input type="text" name="passenger_name" placeholder="Passenger Name" required><br><br>
+    <input type="email" name="email" placeholder="Email" required><br><br>
+    <input type="text" name="phone_no" placeholder="Phone Number" required><br><br>
+    <input type="text" name="adhar_no" placeholder="Aadhar Number" required><br><br>
+    <input type="number" name="age" placeholder="Age" required><br><br>
+
+    <select name="seat_class">
+        <option value="Economy">Economy</option>
+        <option value="Business">Business</option>
+        <option value="First Class">First Class</option>
+    </select><br><br>
+
+    <input type="text" name="seat_no" placeholder="Seat Number" required><br><br>
+
+    <button type="submit">Confirm Booking</button>
+</form>
+
+{% endblock %}

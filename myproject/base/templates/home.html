@@ -1,0 +1,41 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<h2>Search Flights</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    
+    <label for="">From :</label>
+    <input type="text" name="source" placeholder="Source">
+    <label for="">To :</label>
+    <input type="text" name="destination" placeholder="Destination">
+    <label for="">Date :</label>
+    <input type="date" name="date_" placeholder="Date"> 
+    
+    <button type="submit">Search</button>
+</form>
+
+<hr>
+
+<h2>Flight List</h2>
+
+{% for i in data %}
+    <div>
+        <h2>{{ i.flight_company }}</h2>
+        <h3>{{i.flight_name}}</h3>
+        <h3>{{i.flight_no}}</h3>
+        <p>{{ i.from_city }} → {{ i.to_city }}</p>
+        <p>Price: {{ i.price }}</p>
+        <p>{{i.departure_time}}</p>
+        <p>Date: {{ i.departure_date }}</p>
+    </div>
+    <a href="{% url 'bookings_form' i.id %}">Book Now</a>
+{% empty %}
+    <p>No flights available</p>
+{% endfor %}
+
+
+
+{% endblock %}
