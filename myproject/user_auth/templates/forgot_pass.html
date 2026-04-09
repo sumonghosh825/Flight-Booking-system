@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<h1>FORGOT PASSWORD PAGE</h1>
+<center>
+    {{error}}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label for="">Username:</label>
+        <input type="text" name="username" id=""> <br><br>
+
+        <button type="submit">SUBMIT</button>
+    </form>
+</center>
+{% endblock %}

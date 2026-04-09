@@ -87,8 +87,6 @@ def history(request):
     return render(request,'history.html', {'data': data})
 
 
-def profile(request):
-    return render(request,'profile.html')
 
 
 def logout(request):
