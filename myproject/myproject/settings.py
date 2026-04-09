@@ -48,7 +48,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 EMAIL_HOST_USER = 'bcasumonghosh825@gmail.com'
-EMAIL_HOST_PASSWORD = 'oozx izfw xhqm pxwo'
+EMAIL_HOST_PASSWORD = ''
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
